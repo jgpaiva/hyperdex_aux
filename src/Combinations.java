@@ -180,8 +180,10 @@ public class Combinations {
 	for (Configuration config : configurations) {
 	    double estimatedThroughput = 0.0;
 	    for (QueryTemplate query : workloadQueries) {
-		estimatedThroughput += query.calculateCost(config, K, O);
+		double tmp = query.calculateCost(config, K, O);
+		estimatedThroughput += tmp;
 	    }
+	    estimatedThroughput = 1 / estimatedThroughput;
 	    config.setEstimatedThroughput(estimatedThroughput);
 	    ranking[i] = config;
 	    i++;
@@ -234,9 +236,9 @@ public class Combinations {
 	    }
 
 	    if (type.equals("M")) {
-		workloadQueries.add(new ModifyTemplate(percentage * percModify, attrs));
+		workloadQueries.add(new ModifyTemplate((percentage / 100.0) * (percModify / 100.0), attrs));
 	    } else if (type.equals("S")) {
-		workloadQueries.add(new SearchTemplate(percentage * percSearch, attrs));
+		workloadQueries.add(new SearchTemplate((percentage / 100.0) * (percSearch / 100.0), attrs));
 	    } else {
 		exitError("Type " + type + " is not yet supported");
 	    }
@@ -304,14 +306,14 @@ public class Combinations {
 	public double calculateCost(Configuration configuration, int K, int O) {
 	    int CR = configuration.regionsContacted(this, REGIONS_DEFAULT);
 	    double estT = 1.0 / (CR * O / REGIONS_DEFAULT * BETA);
-	    return super.percentage * estT;
+	    return super.percentage / estT;
 	}
 
     }
 
     static class ModifyTemplate extends QueryTemplate {
 
-	private static final double ALPHA = 5.33;
+	private static final double ALPHA = 5.30;
 	private static final double MAX_T = 98000;
 
 	public ModifyTemplate(double percentage, List<String> attributes) {
@@ -320,10 +322,10 @@ public class Combinations {
 
 	@Override
 	public double calculateCost(Configuration configuration, int K, int O) {
-	    int M = configuration.getM(this);
-	    int N = configuration.getM(this);
+	    double M = configuration.getM(this);
+	    double N = configuration.getN(this);
 	    double estT = (MAX_T) / (1 + K * (N + ALPHA * M));
-	    return super.percentage * estT;
+	    return super.percentage / estT;
 	}
 
     }
@@ -462,7 +464,7 @@ public class Combinations {
 
 	// FIXME: test!
 	public int getN(ModifyTemplate m) {
-	    return subspaces.size() - getM(m);
+	    return 1 + subspaces.size() - getM(m);
 	}
 
 	// FIXME: test!
