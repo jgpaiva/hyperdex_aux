@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.Set;
 
 public class Combinations {
-        public static final int REPLICATION_DEGREE = 1;
+        public static final int REPLICATION_DEGREE = 2;
         public static final int DATA_SIZE = 256000;
         // TODO we should actually calculate Ri, no?
         private static final int REGIONS_DEFAULT = 256;
@@ -33,11 +33,11 @@ public class Combinations {
 		List<String> attributes = new ArrayList<String>(parseWorkload(file));
 		List<Configuration> configs = genAllCombinations(attributes);
 		Configuration[] ranking = rankConfigurations(configs, K, O);
-		Configuration[] filteredRanking = filterConfigurations(ranking);
+		Configuration[] sampledRanking = sampleConfigurations(ranking);
 		
-		System.out.println("#### Filtered configurations ####");
+		System.out.println("#### Sampled configurations ####");
 		int rank = 1;
-		for (Configuration config : filteredRanking) {
+		for (Configuration config : sampledRanking) {
 			System.out.println(rank + " \t- " + config + " | " + round1(config.getEstimatedThroughput()));
 			rank++;
 		}
@@ -51,9 +51,9 @@ public class Combinations {
 	}
 
         /**
-         * Filter configurations accoring to a sampling algorithm.
+         * Sample configurations accoring to a sampling algorithm.
          **/
-	private static Configuration[] filterConfigurations(Configuration[] ranking) {
+	private static Configuration[] sampleConfigurations(Configuration[] ranking) {
 		ArrayList<ArrayList<Configuration>> configs = new ArrayList<ArrayList<Configuration>>();
 		ArrayList<Configuration> retVal = new ArrayList<Configuration>();
 
