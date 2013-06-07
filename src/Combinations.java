@@ -70,8 +70,8 @@ public class Combinations {
 		}
 
 		Random r = new Random();
-		// part 1: remove the first 10
-		for (int it = 0; it < 10 && configs.size() > 0; it++) {
+		// part 1: remove the first 5
+		for (int it = 0; it < 5 && configs.size() > 0; it++) {
 			ArrayList<Configuration> removed = configs.remove(0);
 			retVal.add(removed.remove(r.nextInt(removed.size())));
 			if (removed.size() > 4) {
@@ -79,10 +79,10 @@ public class Combinations {
 			}
 		}
 		// part 2: remove from the remaining ones
-		while (retVal.size() < 20 && configs.size() > 0) {
+		while (retVal.size() < 10 && configs.size() > 0) {
 			ArrayList<Configuration> removed = configs.remove(r.nextInt(configs.size()));
 			retVal.add(removed.remove(r.nextInt(removed.size())));
-			if (removed.size() > 4 && retVal.size() < 20) {
+			if (removed.size() > 4 && retVal.size() < 10) {
 				retVal.add(removed.remove(r.nextInt(removed.size())));
 			}
 		}
@@ -297,6 +297,8 @@ public class Combinations {
 			List<String> attrs = new ArrayList<String>();
 			for (int i = 2; i < template.length; i++) {
 				String attributeName = template[i];
+                                if(attributeName.equals("factual_id"))
+                                    continue;
 				uniqueAttrs.add(attributeName);
 				attrs.add(attributeName);
 			}
