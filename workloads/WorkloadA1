@@ -2,6 +2,6 @@
 M 50.0 factual_id address
 M 50.0 factual_id postcode
 S 6.0 region
-S 13.0 addr postcode
+S 13.0 address postcode
 S 26.0 region address tel
 S 55.0 region address postcode tel
