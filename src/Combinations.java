@@ -14,12 +14,19 @@ import java.util.Random;
 import java.util.Set;
 
 public class Combinations {
+        public static final int REPLICATION_DEGREE = 1;
+        public static final int DATA_SIZE = 256000;
+        // TODO we should actually calculate Ri, no?
+        private static final int REGIONS_DEFAULT = 256;
+        private static final double BETA = 3.31 * Math.pow(10, -7);
+        private static final double ALPHA = 5.30;
+        private static final double MAX_T = 98000;
+
+
 	static public void main(String[] args) {
 		// testCombinationGeneration();
 		String configFile = args[0];
-		int replicationDegree = Integer.parseInt(args[1]);
-		int dataSize = Integer.parseInt(args[2]);
-		processWorkload(configFile, replicationDegree, dataSize);
+		processWorkload(configFile, REPLICATION_DEGREE, DATA_SIZE);
 	}
 
 	private static void processWorkload(String file, int K, int O) {
@@ -28,13 +35,14 @@ public class Combinations {
 		Configuration[] ranking = rankConfigurations(configs, K, O);
 		Configuration[] filteredRanking = filterConfigurations(ranking);
 		
-		System.out.println();
+		System.out.println("#### Filtered configurations ####");
 		int rank = 1;
 		for (Configuration config : filteredRanking) {
 			System.out.println(rank + " \t- " + config + " | " + round1(config.getEstimatedThroughput()));
 			rank++;
 		}
-		
+
+		System.out.println("#### All configurations ####");
 		rank = 1;
 		for (Configuration config : ranking) {
 			System.out.println(rank + " \t- " + config + " | " + round1(config.getEstimatedThroughput()));
@@ -42,13 +50,16 @@ public class Combinations {
 		}
 	}
 
+        /**
+         * Filter configurations accoring to a sampling algorithm.
+         **/
 	private static Configuration[] filterConfigurations(Configuration[] ranking) {
 		ArrayList<ArrayList<Configuration>> configs = new ArrayList<ArrayList<Configuration>>();
 		ArrayList<Configuration> retVal = new ArrayList<Configuration>();
 
 		Configuration previous = null;
 		for (Configuration it : ranking) {
-			if (previous == null || previous.getEstimatedThroughput() < it.getEstimatedThroughput()) {
+			if (previous == null || previous.getEstimatedThroughput() > it.getEstimatedThroughput()) {
 				ArrayList<Configuration> toAdd = new ArrayList<Configuration>();
 				toAdd.add(it);
 				configs.add(toAdd);
@@ -75,7 +86,9 @@ public class Combinations {
 				retVal.add(removed.remove(r.nextInt(removed.size())));
 			}
 		}
-		return retVal.toArray(new Configuration[0]);
+                Configuration [] rvArray = retVal.toArray(new Configuration[0]);
+		Arrays.sort(rvArray);
+		return rvArray;
 	}
 
 	protected static void testCombinationGeneration() {
@@ -347,10 +360,6 @@ public class Combinations {
 
 	static class SearchTemplate extends QueryTemplate {
 
-		// TODO we should actually calculate Ri, no?
-		private static final int REGIONS_DEFAULT = 256;
-		private static final double BETA = 3.31 * Math.pow(10, -7);
-
 		public SearchTemplate(double percentage, List<String> attributes) {
 			super(percentage, attributes);
 		}
@@ -365,9 +374,6 @@ public class Combinations {
 	}
 
 	static class ModifyTemplate extends QueryTemplate {
-
-		private static final double ALPHA = 5.30;
-		private static final double MAX_T = 98000;
 
 		public ModifyTemplate(double percentage, List<String> attributes) {
 			super(percentage, attributes);
@@ -501,7 +507,6 @@ public class Combinations {
 			return retval;
 		}
 
-		// FIXME: test!
 		public int getM(ModifyTemplate m) {
 			int retVal = 0;
 			for (Subspace i : subspaces) {
@@ -515,12 +520,10 @@ public class Combinations {
 			return retVal;
 		}
 
-		// FIXME: test!
 		public int getN(ModifyTemplate m) {
 			return 1 + subspaces.size() - getM(m);
 		}
 
-		// FIXME: test!
 		public int regionsContacted(SearchTemplate s, int r) {
 			int min = Integer.MAX_VALUE;
 			for (Subspace sub : subspaces) {
@@ -532,7 +535,6 @@ public class Combinations {
 			return min;
 		}
 
-		// FIXME: test!
 		private int calcRegions(SearchTemplate s, Subspace sub, int r) {
 			double S = sub.size();
 			double E = S;
