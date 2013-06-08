@@ -1,6 +1,0 @@
-0.0 20.0 80.0
-S 25.0 reg
-S 25.0 addr
-S 25.0 post
-S 25.0 tel
-M 100.0 reg addr post tel
