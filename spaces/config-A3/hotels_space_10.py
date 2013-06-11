@@ -9,7 +9,7 @@ c.add_space('''
     attributes string name, string address, float ratings, int stars, 
                string category, string status, string tel, 
                string region, string locality, string postcode,
-               int lowest_price, int highest_price, 
+               string lowest_price, int highest_price, 
                float longitude, float latitude
     subspace region
     tolerate 1 failure
