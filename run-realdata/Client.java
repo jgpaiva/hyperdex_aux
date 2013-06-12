@@ -115,7 +115,7 @@ public class Client {
                                 for (String kk: nextQuery.params.keySet()){
                                     Object t = nextQuery.params.get(kk);
                                     if(t instanceof String)
-                                        nextQuery.params.put(kk,shuffleStr((String)t));
+                                        nextQuery.params.put(kk,t);
                                 }
 				values.putAll(nextQuery.params);
                                 values.remove("factual_id");
