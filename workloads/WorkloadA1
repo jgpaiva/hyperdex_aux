@@ -1,7 +1,7 @@
 0.0 10.0 90.0
-M 50.0 factual_id address
+M 50.0 factual_id category
 M 50.0 factual_id postcode
 S 6.0 region
-S 13.0 address postcode
-S 26.0 region address tel
-S 55.0 region address postcode tel
+S 13.0 category postcode
+S 26.0 region category lowest_price
+S 55.0 region category postcode lowest_price
