@@ -57,8 +57,8 @@ public class Client {
 			    if (nextQuery.type.equals("S")) {
                                 Map<String, Object> values = new HashMap<String, Object>();
                                 for (Map.Entry<String, Object> entry : nextQuery.params.entrySet()) {
-                                    //values.put(entry.getKey(), Integer.toString(rand.nextInt()));
-                                    values.put(entry.getKey(), entry.getValue());
+                                    values.put(entry.getKey(), Integer.toString(rand.nextInt()));
+                                    //values.put(entry.getKey(), entry.getValue());
                                 }
                                 int querySize = values.size();
                                 Long queryCount = countMap.get(querySize);
@@ -115,7 +115,7 @@ public class Client {
                                 for (String kk: nextQuery.params.keySet()){
                                     Object t = nextQuery.params.get(kk);
                                     if(t instanceof String)
-                                        nextQuery.params.put(kk,t);
+                                        nextQuery.params.put(kk,shuffleStr((String)t));
                                 }
 				values.putAll(nextQuery.params);
                                 values.remove("factual_id");

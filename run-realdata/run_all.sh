@@ -7,19 +7,20 @@ N=$1
 
 W=$2
 
-for i in 2
+for i in 1 2 3
 do
-    cp ../hyperdex_aux/workloads/Workload$W$i Config
-    cp ../hyperdex_aux/spaces/config-$W$i/*.py .
+    cp ../hyperdex_aux/configs/Workload$W$i Config
     sleep 3
 
-    for j in {1..10}
+    for j in 11 12 13 14
     do
+        cp ../hyperdex_aux/configs/spaces-$W$i/hotels_space_$j.py .
+        sleep 2
         ./repeat.sh $N $j
         sleep 5
         scp -r space$j cloudtm:nas/Workloads/Workload$W$i/
         sleep 1
-        rm -rf space$j
+        rm -rf space$j hotels_space_$j.py
     done
 
     #./deploy.sh $N
