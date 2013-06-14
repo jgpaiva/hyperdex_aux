@@ -1,0 +1,24 @@
+0.0 50.0 50.0
+M 50.0 factual_id price
+M 50.0 factual_id rating
+S 0.00200682319888 region price
+S 0.00200682319888 region rating
+S 0.00200682319888 region price rating
+S 0.000100341159944 region price category
+S 0.000100341159944 region rating category
+S 0.000200682319888 region stars rating
+S 0.000200682319888 region stars price
+S 0.200682319888 city price
+S 0.200682319888 city rating
+S 0.200682319888 city price rating
+S 0.0100341159944 city price category
+S 0.0100341159944 city rating category
+S 0.0200682319888 city stars rating
+S 0.0200682319888 city stars price
+S 0.100341159944 zip price
+S 0.100341159944 zip rating
+S 0.100341159944 zip price rating
+S 0.00501705799719 zip price category
+S 0.00501705799719 zip rating category
+S 0.0100341159944 zip stars rating
+S 0.0100341159944 zip stars price
