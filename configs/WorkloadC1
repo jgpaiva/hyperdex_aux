@@ -1,24 +1,24 @@
 0.0 10.0 90.0
-M 50.0 factual_id price
+M 50.0 factual_id lowest_price
 M 50.0 factual_id ratings
-S 0.200682319888 region price
+S 0.200682319888 region lowest_price
 S 0.200682319888 region ratings
-S 0.200682319888 region price ratings
-S 0.0100341159944 region price category
+S 0.200682319888 region lowest_price ratings
+S 0.0100341159944 region lowest_price category
 S 0.0100341159944 region ratings category
 S 0.0200682319888 region stars ratings
-S 0.0200682319888 region stars price
-S 20.0682319888 locality price
+S 0.0200682319888 region stars lowest_price
+S 20.0682319888 locality lowest_price
 S 20.0682319888 locality ratings
-S 20.0682319888 locality price ratings
-S 1.00341159944 locality price category
+S 20.0682319888 locality lowest_price ratings
+S 1.00341159944 locality lowest_price category
 S 1.00341159944 locality ratings category
 S 2.00682319888 locality stars ratings
-S 2.00682319888 locality stars price
-S 10.0341159944 postcode price
+S 2.00682319888 locality stars lowest_price
+S 10.0341159944 postcode lowest_price
 S 10.0341159944 postcode ratings
-S 10.0341159944 postcode price ratings
-S 0.501705799719 postcode price category
+S 10.0341159944 postcode lowest_price ratings
+S 0.501705799719 postcode lowest_price category
 S 0.501705799719 postcode ratings category
 S 1.00341159944 postcode stars ratings
-S 1.00341159944 postcode stars price
+S 1.00341159944 postcode stars lowest_price
