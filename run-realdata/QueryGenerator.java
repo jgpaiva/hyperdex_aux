@@ -132,9 +132,9 @@ public class QueryGenerator {
 	    values.add(parts[2].trim());
 	    values.add(new String(""+Integer.parseInt(parts[3].trim())));
 	    values.add(Integer.parseInt(parts[4].trim()));
-	    values.add(Double.parseDouble(parts[5].trim()));
+	    values.add(new String(""+Double.parseDouble(parts[5].trim())));
 	    values.add(parts[6].trim());
-	    values.add(Integer.parseInt(parts[7].trim()));
+	    values.add(new String(""+Integer.parseInt(parts[7].trim())));
 	    values.add(parts[8].trim());
 	    values.add(parts[9].trim());
 	    values.add(parts[10].trim());
