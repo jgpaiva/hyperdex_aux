@@ -15,9 +15,9 @@ def combine(lst1,lst2):
     for (n1,p1) in lst1:
         for (n2,p2) in lst2:
             if n1 != "":
-                ret.append((n1+" "+n2,p1*p2))
+                ret.append((n1+" "+n2,p1*p2*100))
             else:
-                ret.append((n2,p1*p2))
+                ret.append((n2,p1*p2*100))
     return ret
 
 
