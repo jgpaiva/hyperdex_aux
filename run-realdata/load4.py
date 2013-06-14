@@ -25,9 +25,9 @@ def loaddata(c):
             lowest_pr= str(int(s_line[3].strip()))
             # note that lowest_pr is now a string
             highest_pr=int(s_line[4].strip())
-            ratings  = float(s_line[5].strip())
+            ratings  = str(float(s_line[5].strip()))
             status   = str(s_line[6].strip())
-            stars    = int(s_line[7].strip())
+            stars    = str(int(s_line[7].strip()))
             tel      = str(s_line[8].strip())
             region   = str(s_line[9].strip())
             locality = str(s_line[10].strip())
