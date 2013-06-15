@@ -1,0 +1,12 @@
+region address 5021
+region tel address,postcode 3955
+region address,tel postcode 3760
+region address,tel,postcode 3869
+region address tel postcode 3459
+region tel,postcode 3273
+region,address tel 1577
+region,address,postcode 1141
+region,tel,postcode 784.09
+postcode 149.19
+region,address,postcode,tel 580.40
+region 389.93

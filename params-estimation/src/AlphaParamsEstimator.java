@@ -57,8 +57,9 @@ public class AlphaParamsEstimator {
 	int rank = 0;
 	for (AvgCalc avg : set) {
 	    rank++;
-	    System.out.println("Rank " + rank + "\terror: " + df.format(avg.average) + "\t" + df.format(avg.stdev) + "\t" + avg.type);
-	    System.out.println(avg.output);
+	    // System.out.println("Rank " + rank + "\terror: " + df.format(avg.average) + "\t" + df.format(avg.stdev) + "\t" + avg.type);
+	    // System.out.println(avg.output);
+	    System.out.println(df.format(avg.average) + "\t" + df.format(avg.stdev) + "\t" + avg.type);
 	    
 	}
     }

@@ -1,0 +1,11 @@
+region address 6266
+region address tel 5266
+region,tel postcode 5376
+region address,postcode 5220
+region address,tel postcode 4392
+region address,tel,postcode 5101
+region address tel postcode 3816
+tel region,address,postcode 3390
+region,tel,postcode 2315
+region 685.71
+region,address,postcode,tel 2687
