@@ -101,7 +101,8 @@ public class QueryGenerator {
 	if ((tmpPercModify != 100.0 && this.percModify != 0.0)) {
 	    exitError("The sum of percentages for templates of modify is not 100.0");
 	}
-	if ((tmpPercSearch != 100.0 && this.percSearch != 0.0)) {
+	//if ((tmpPercSearch != 100.0 && this.percSearch != 0.0)) {
+	if ((tmpPercSearch < 100 - 0.00002 && tmpPercSearch > 100 - 0.00002) && this.percSearch != 0.0) {
 	    exitError("The sum of percentages for templates of search is not 100.0");
 	}
 	
@@ -179,23 +180,23 @@ public class QueryGenerator {
 	
 	int repeatRan = Math.abs(ranGen.get().nextInt()) % REPEAT;
 	Map<String, Object> params = new HashMap<String, Object>();
-	Object cachedValue = null; // used to ensure region == postcode if both appear in the query
+	//Object cachedValue = null; // used to ensure region == postcode if both appear in the query
 	for (String attr : template.attributesToQuery) {
 	    Object[] uniqueValues = this.attrsUniqueValues.get(attr.equals("postcode") ? "region" : attr);
 	    int attrValueRan = Math.abs(ranGen.get().nextInt()) % uniqueValues.length;
 	    Object value = uniqueValues[attrValueRan];
-	    if (attr.equals("postcode") || attr.equals("region")) {
-	    	if (cachedValue == null) {
-	    	    cachedValue = value;
-	    	} else {
-            	    value = cachedValue;       
-	    	}
-	    }
+	    //if (attr.equals("postcode") || attr.equals("region")) {
+	    //	if (cachedValue == null) {
+	    //	    cachedValue = value;
+	    //	} else {
+            //	    value = cachedValue;       
+	    //	}
+	    //}
 	    if (value instanceof String) {
-		String strValue = (String) value;
-		params.put(attr, value + "-" + repeatRan);
+	        String strValue = (String) value;
+	        params.put(attr, value + "-" + repeatRan);
 	    } else {
-		params.put(attr, value);
+	        params.put(attr, value);
 	    }
 	}
 	
