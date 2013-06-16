@@ -1,0 +1,13 @@
+region locality postcode 6874
+region,stars locality postcode 6612
+region,category locality postcode 6695
+region,category,stars locality postcode 6537                            
+region category locality postcode 5640                            
+category,stars locality lowest_price,postcode,ratings 4114
+stars,locality postcode ratings 3140                            
+category lowest_price locality region,stars,postcode 2997                            
+region lowest_price,locality category,postcode 2579                            
+stars category,lowest_price,locality,ratings 1292                            
+region,lowest_price,ratings,category,stars,locality,postcode 865.48                            
+region lowest_price ratings category stars locality postcode 2863.78                            
+region 161

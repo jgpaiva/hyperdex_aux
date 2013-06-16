@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -18,7 +17,7 @@ public class AssessAllErrors {
 	int repl = Integer.parseInt(args[1]);
 	double maxt = Double.parseDouble(args[2]);
 	String prefix = args[3];
-	String[] workloads = {"A1", "A2", "A3", "B1", "B2", "B3"};
+	String[] workloads = {"A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"};
 
 	Set<AverageError> set = new TreeSet<AverageError>();
 	List<Alpha> alphas = getAlphas(alphaValuesFile);

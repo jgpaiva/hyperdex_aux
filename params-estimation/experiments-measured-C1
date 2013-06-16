@@ -1,0 +1,13 @@
+region locality postcode 4570
+region category locality postcode 4353
+region stars category locality postcode 4385
+region category,lowest_price,stars locality postcode 4382
+region locality postcode category,stars,ratings 4249
+lowest_price ratings 6255
+region lowest_price category,stars locality postcode 4110
+region stars locality postcode ratings 4937
+category,stars region,locality lowest_price,postcode,ratings 447.57
+lowest_price,stars region,postcode 48.27
+region,lowest_price,ratings,category,stars,locality,postcode 95.97
+region lowest_price ratings category stars locality postcode 4076
+region 17.33 
