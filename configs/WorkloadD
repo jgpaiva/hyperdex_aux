@@ -1,0 +1,6 @@
+0.0 99.0 1.0
+M 100.0 factual_id address postcode tel region
+S 25.0 address 
+S 25.0 postcode
+S 25.0 region 
+S 25.0 tel
